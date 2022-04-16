@@ -1,0 +1,6 @@
+#+TITLE: Modern C++ Practice
+#+AUTHOR: Amol Gawai
+#+STARTUP: Overview
+* Introduction
+This repository is for practicing and learning modern c++ (post c++11) and modern cmake (post 3.0)
+The repository is based on starter project [[https://github.com/TheLartians/ModernCppStarter][ModernCppStarter]] and the cmake is loosly based on [[https://cliutils.gitlab.io/modern-cmake/][Introduction to Modern CMake]]
