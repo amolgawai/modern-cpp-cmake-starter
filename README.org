@@ -4,3 +4,25 @@
 * Introduction
 This repository is for practicing and learning modern c++ (post c++11) and modern cmake (post 3.0)
 The repository is based on starter project [[https://github.com/TheLartians/ModernCppStarter][ModernCppStarter]] and the cmake is loosly based on [[https://cliutils.gitlab.io/modern-cmake/][Introduction to Modern CMake]]
+* Generic Guidelines
+** Repository Structure
+- As far as possible, all directories are self contained
+- Executables are in the "apps" directory, one directory per app
+- Libraries are in "libs" directory, one directory per library
+- Every app or library directory has one or all of directories viz. "include", "src", "tests"
+- Each namespace gets own directory inside the above three
+** Build System
+- CMake is primary build system(version 3.23), Bazel might be added later
+- Out of source build and dependency management
+- Every target (executable or library) CMakeLists.txt is self contained (i.e. does not depend directly on the external structure)
+- The main CMakeLists.txt makes all the dependencies available to the apps and libraries
+- CPM.CMake is used for external dependency download and setup
+* Building with CMake
+#+BEGIN_SRC shell
+    # configure build with ninja
+      cmake -S . -B build -GNinja
+  # build everything
+    cmake --build build
+  # build specific target
+  cmake --build build --target <name>
+#+END_SRC
