@@ -19,12 +19,12 @@ The repository is based on starter project [[https://github.com/TheLartians/Mode
 - [[https://github.com/cpm-cmake/CPM.cmake][CPM]] is used for external dependency download and setup
 * Building with CMake
 #+BEGIN_SRC shell
-    # configure build with ninja
-      cmake -S . -B build -GNinja
+  # configure build with ninja
+   cmake -S . -B build -GNinja
   # build everything
-    cmake --build build
+   cmake --build build
   # build specific target
-  cmake --build build --target <name>
+   cmake --build build --target <name>
 #+END_SRC
 * ☛ TODO Practice Plan
 * References
