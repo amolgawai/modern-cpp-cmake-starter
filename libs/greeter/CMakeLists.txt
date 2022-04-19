@@ -1,0 +1,39 @@
+cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
+
+
+# ---- Add source files ----
+
+# Note: globbing sources is considered bad practice as CMake's generators may not detect new files
+# automatically. Keep that in mind when changing files, or explicitly mention them here.
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
+file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+
+# ---- Create library ----
+
+# Note: for header-only libraries change all PUBLIC flags to INTERFACE and create an interface
+# target: add_library(${PROJECT_NAME} INTERFACE)
+add_library(greeter ${headers} ${sources})
+
+# All users of this library will need at least C++17
+target_compile_features(greeter PUBLIC cxx_std_17)
+
+# being a cross-platform target, we enforce standards conformance on MSVC
+target_compile_options(greeter PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->")
+
+# Link dependencies
+target_link_libraries(greeter PRIVATE fmt::fmt)
+
+# target_include_directories(
+#   ${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+#                          $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+# )
+
+# We need this directory, and users of our library will need it too
+target_include_directories(greeter PUBLIC ./include)
+
+
+# IDEs should put the headers in a nice place
+# source_group(
+#   TREE "${PROJECT_SOURCE_DIR}/include"
+#   PREFIX "Header Files"
+#   FILES ${HEADER_LIST})

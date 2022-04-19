@@ -37,3 +37,4 @@ The repository is based on starter project [[https://github.com/TheLartians/Mode
 - [[https://ccc.codes][Book - C++ Crash Course]]
 - [[https://www.stroustrup.com/tour2.html][Book - A Tour of C++]]
 - [[https://changkun.de/modern-cpp/pdf/modern-cpp-tutorial-en-us.pdf][Modern C++ Tutorial]]
+- [[https://www.amazon.de/-/en/Peter-Gottschling/dp/0134383583][Book - Discovering Modern C++]]
