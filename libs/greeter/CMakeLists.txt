@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
 
 # Note: globbing sources is considered bad practice as CMake's generators may not detect new files
 # automatically. Keep that in mind when changing files, or explicitly mention them here.
-file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
+file(GLOB_RECURSE headers CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/include/greeter/*.h")
 file(GLOB_RECURSE sources CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 # ---- Create library ----
@@ -23,17 +23,11 @@ target_compile_options(greeter PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permis
 # Link dependencies
 target_link_libraries(greeter PRIVATE fmt::fmt)
 
-# target_include_directories(
-#   ${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-#                          $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
-# )
+target_include_directories(
+  greeter PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                         $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+)
 
-# We need this directory, and users of our library will need it too
-target_include_directories(greeter PUBLIC ./include)
-
-
-# IDEs should put the headers in a nice place
-# source_group(
-#   TREE "${PROJECT_SOURCE_DIR}/include"
-#   PREFIX "Header Files"
-#   FILES ${HEADER_LIST})
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
