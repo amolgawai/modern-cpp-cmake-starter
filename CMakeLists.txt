@@ -15,7 +15,7 @@ project(
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
   message(
     FATAL_ERROR
-      "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
+    "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
   )
 endif()
 
@@ -57,17 +57,17 @@ include(cmake/CPM.cmake)
 include(cmake/tools.cmake)
 
 
-CPMAddPackage(
+cpmaddpackage(
   NAME fmt
   GIT_TAG 7.1.3
   GITHUB_REPOSITORY fmtlib/fmt
   OPTIONS "FMT_INSTALL YES" # create an installable target
 )
-CPMAddPackage("gh:onqtam/doctest@2.4.8")
-CPMAddPackage("gh:TheLartians/Format.cmake@1.7.3")
+cpmaddpackage("gh:onqtam/doctest@2.4.8")
+cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
 add_subdirectory(libs)
 
-CPMAddPackage(
+cpmaddpackage(
   GITHUB_REPOSITORY jarro2783/cxxopts
   VERSION 2.2.1
   OPTIONS "CXXOPTS_BUILD_EXAMPLES NO" "CXXOPTS_BUILD_TESTS NO" "CXXOPTS_ENABLE_INSTALL YES"
@@ -75,17 +75,17 @@ CPMAddPackage(
 add_subdirectory(apps)
 
 # PackageProject.cmake will be used to make our target installable
-CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.8.0")
+cpmaddpackage("gh:TheLartians/PackageProject.cmake@1.8.0")
 
 # ---- Create an installable target ----
 # this allows users to install and find the library via `find_package()`.
 # the location where the project's version header will be placed should match the project's regular
 # header paths
 string(TOLOWER greeter/version.h VERSION_HEADER_LOCATION)
-packageProject(
-NAME greeter
-VERSION ${PROJECT_VERSION}
-NAMESPACE greeter
+packageproject(
+  NAME greeter
+  VERSION ${PROJECT_VERSION}
+  NAMESPACE greeter
   BINARY_DIR ${PROJECT_BINARY_DIR}
   INCLUDE_DIR ${PROJECT_SOURCE_DIR}/libs/greeter/include
   INCLUDE_DESTINATION include/${PROJECT_NAME}-${PROJECT_VERSION}

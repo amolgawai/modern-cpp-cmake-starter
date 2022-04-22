@@ -35,7 +35,7 @@ auto main(int argc, char** argv) -> int {
     return 0;
   }
 
-if (result["version"].as<bool>()) {
+  if (result["version"].as<bool>()) {
     std::cout << "Greeter, version " << GREETER_VERSION << std::endl;
     return 0;
   }
