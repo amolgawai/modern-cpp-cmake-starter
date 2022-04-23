@@ -57,17 +57,17 @@ include(cmake/CPM.cmake)
 include(cmake/tools.cmake)
 
 
-cpmaddpackage(
+CPMAddPackage(
   NAME fmt
   GIT_TAG 7.1.3
   GITHUB_REPOSITORY fmtlib/fmt
   OPTIONS "FMT_INSTALL YES" # create an installable target
 )
-cpmaddpackage("gh:onqtam/doctest@2.4.8")
-cpmaddpackage("gh:TheLartians/Format.cmake@1.7.3")
+CPMAddPackage("gh:onqtam/doctest@2.4.8")
+CPMAddPackage("gh:TheLartians/Format.cmake@1.7.3")
 add_subdirectory(libs)
 
-cpmaddpackage(
+CPMAddPackage(
   GITHUB_REPOSITORY jarro2783/cxxopts
   VERSION 2.2.1
   OPTIONS "CXXOPTS_BUILD_EXAMPLES NO" "CXXOPTS_BUILD_TESTS NO" "CXXOPTS_ENABLE_INSTALL YES"
@@ -75,7 +75,7 @@ cpmaddpackage(
 add_subdirectory(apps)
 
 # PackageProject.cmake will be used to make our target installable
-cpmaddpackage("gh:TheLartians/PackageProject.cmake@1.8.0")
+CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.8.0")
 
 # ---- Create an installable target ----
 # this allows users to install and find the library via `find_package()`.
