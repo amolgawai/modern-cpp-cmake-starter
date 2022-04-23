@@ -13,12 +13,8 @@ project(
 # ---- Include guards ----
 
 if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
-  message(
-    FATAL_ERROR
-    "In-source builds not allowed. Use a build directory."
-  )
+  message(FATAL_ERROR "In-source builds not allowed. Use a build directory.")
 endif()
-
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
@@ -30,13 +26,10 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   # Let's nicely support folders in IDEs
   set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-  # Testing only available if this is the main app
-  # Note this needs to be done in the main CMakeLists
-  # since it calls enable_testing, which must be in the
-  # main CMakeLists.
+  # Testing only available if this is the main app Note this needs to be done in the main CMakeLists
+  # since it calls enable_testing, which must be in the main CMakeLists.
   include(CTest)
-  # include(CMakePrintHelpers)
-  # Docs only available if this is the main app
+  # include(CMakePrintHelpers) Docs only available if this is the main app
   find_package(Doxygen)
   if(Doxygen_FOUND)
     add_subdirectory(docs)
@@ -55,7 +48,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(cmake/CPM.cmake)
 include(cmake/tools.cmake)
-
 
 CPMAddPackage(
   NAME fmt
@@ -78,9 +70,8 @@ add_subdirectory(apps)
 CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.8.0")
 
 # ---- Create an installable target ----
-# this allows users to install and find the library via `find_package()`.
-# the location where the project's version header will be placed should match the project's regular
-# header paths
+# this allows users to install and find the library via `find_package()`. the location where the
+# project's version header will be placed should match the project's regular header paths
 string(TOLOWER greeter/version.h VERSION_HEADER_LOCATION)
 packageProject(
   NAME greeter
