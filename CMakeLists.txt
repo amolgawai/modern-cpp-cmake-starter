@@ -82,7 +82,7 @@ CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.8.0")
 # the location where the project's version header will be placed should match the project's regular
 # header paths
 string(TOLOWER greeter/version.h VERSION_HEADER_LOCATION)
-packageproject(
+packageProject(
   NAME greeter
   VERSION ${PROJECT_VERSION}
   NAMESPACE greeter
