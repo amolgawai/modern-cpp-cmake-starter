@@ -3,11 +3,7 @@ cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
 # project(GreeterDocs)
 
 # ---- Dependencies ----
-
-include(../cmake/CPM.cmake)
-
-CPMAddPackage("gh:mosra/m.css#42d4a9a48f31f5df6e246c948403b54b50574a2a")
-# CPMAddPackage(NAME greeter SOURCE_DIR ${CMAKE_CURRENT_LIST_DIR}/..)
+CPMAddPackage("gh:mosra/m.css#a0d292ec311b97fefd21e93cdefb60f88d19ede6")
 
 # ---- Doxygen variables ----
 

@@ -1,5 +1,11 @@
 cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
 
+if(Doxygen_FOUND)
+  add_subdirectory(docs)
+else()
+  message(STATUS "Doxygen not found, not building docs")
+endif()
+
 # ---- Add source files ----
 
 # Note: globbing sources is considered bad practice as CMake's generators may not detect new files
