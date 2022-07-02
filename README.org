@@ -26,7 +26,7 @@ The repository is based on starter project [[https://github.com/TheLartians/Mode
   # build specific target
    cmake --build build --target <name>
   # configure with code quality tools namely sanitizers, cppcheck, include what you use (iwyu), codecoverage
-   cmake -S . -B build -GNinja -DUSE_SANITIZER='Memory;MemoryWithOrigins;Thread;Leak;Address;Undefined' -DUSE_STATIC_ANALYZER='clang-tidy;iwyu;cppcheck' -DCMAKE_BUILD_TYPE=Coverage
+   cmake -S . -B build -GNinja -DUSE_SANITIZER='Memory;MemoryWithOrigins;Thread;Leak;Address;Undefined' -DUSE_STATIC_ANALYZER='clang-tidy;iwyu;cppcheck' -DENABLE_CODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Coverage
   # run codecoverage for tests (e.g. greeter tests)
    cmake --build build --target coverage_greeter
   # open the code coverage report
