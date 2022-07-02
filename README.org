@@ -3,7 +3,7 @@
 #+STARTUP: Overview
 * Introduction
 This repository is for practicing and learning modern c++ (post c++11) and modern cmake (post 3.0)
-The repository is based on starter project [[https://github.com/TheLartians/ModernCppStarter][ModernCppStarter]] and the cmake is loosly based on [[https://cliutils.gitlab.io/modern-cmake/][Introduction to Modern CMake]]
+The repository is based on starter project [[https://github.com/TheLartians/ModernCppStarter][ModernCppStarter]] and the cmake is loosly based on [[https://cliutils.gitlab.io/modern-cmake/][Introduction to Modern CMake]] and cmake modules from [[https://github.com/bsamseth/cpp-project][cpp-project boilerplate]].
 * Generic Guidelines
 ** Repository Structure
 - As far as possible, all directories are self contained
@@ -25,6 +25,12 @@ The repository is based on starter project [[https://github.com/TheLartians/Mode
    cmake --build build
   # build specific target
    cmake --build build --target <name>
+  # configure with code quality tools namely sanitizers, cppcheck, include what you use (iwyu), codecoverage
+   cmake -S . -B build -GNinja -DUSE_SANITIZER='Memory;MemoryWithOrigins;Thread;Leak;Address;Undefined' -DUSE_STATIC_ANALYZER='clang-tidy;iwyu;cppcheck' -DCMAKE_BUILD_TYPE=Coverage
+  # run codecoverage for tests (e.g. greeter tests)
+   cmake --build build --target coverage_greeter
+  # open the code coverage report
+   open build/coverage_out/index.html
 #+END_SRC
 * ☛ TODO Practice Plan
 * References

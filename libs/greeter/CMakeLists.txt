@@ -22,6 +22,8 @@ add_library(greeter ${headers} ${sources})
 # All users of this library will need at least C++17
 target_compile_features(greeter PUBLIC cxx_std_17)
 
+target_set_warnings(greeter ENABLE ALL AS_ERROR ALL DISABLE Annoying) # Set warnings (if needed).
+
 # being a cross-platform target, we enforce standards conformance on MSVC
 target_compile_options(greeter PUBLIC "$<$<COMPILE_LANG_AND_ID:CXX,MSVC>:/permissive->")
 
