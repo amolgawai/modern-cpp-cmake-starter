@@ -1,5 +1,5 @@
 # --------------------------------------------------------------------------------
-#                            Misc (no change needed).
+# Misc (no change needed).
 # --------------------------------------------------------------------------------
 
 # Ask CMake to output a compile_commands.json file for use with things like Vim YCM.
