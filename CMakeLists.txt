@@ -62,7 +62,17 @@ CPMAddPackage(
     OPTIONS "FMT_INSTALL YES" # create an installable target
 )
 CPMAddPackage("gh:onqtam/doctest@2.4.9")
-CPMAddPackage("gh:TheLartians/Format.cmake@1.7.3")
+# CPMAddPackage("gh:TheLartians/Format.cmake@1.7.3")
+CPMAddPackage(
+  NAME Format.cmake
+  VERSION 1.7.3
+  GITHUB_REPOSITORY TheLartians/Format.cmake
+  OPTIONS
+      # set to yes skip cmake formatting
+      "FORMAT_SKIP_CMAKE NO"
+      # path to exclude (optional, supports regular expressions)
+      "CMAKE_FORMAT_EXCLUDE (cmake/.*|_deps/.*|cpm-package-lock\.cmake)"
+)
 add_subdirectory(libs)
 
 CPMAddPackage(
